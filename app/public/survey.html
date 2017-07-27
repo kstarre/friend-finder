@@ -200,12 +200,22 @@
 	<script type="text/javascript">
 		$(".submit").on('click', function(event) {
 			event.preventDefault();
-
 			var choices = [];
+			// validate name and image entry
+			if ( $("#nameInput").val() === '' || $("#imageInput").val() === '') {
+				alert("You must fill in all fields.");
+				return;
+			};
+
 			for (var i = 1; i < 11; i++) {
 				var choice = $("#question-" + i).val();
+				if (choice === '') {
+					alert("You must fill in all fields.");
+					return;
+				};
 				choices.push( parseInt(choice) );
 			};
+
 			var newFriend = {
 				name: $('#nameInput').val().trim(),
 				photo: $('#imageInput').val().trim(),
